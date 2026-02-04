@@ -4,15 +4,29 @@ A wearable tech concept.
 
 ## The goal
 
+Core:
+
 * An outfit lined with many addressable LEDs (shoulders, waist, boots, wrists, collar).
 * LEDs are mapped in 3D space, allowing for visually cohesive 3D animations.
 * Simple Android app to select animations via Bluetooth (is there an off-the-shelf app?)
-* Microphone allows animation to be synced to any music that's playing around me.
 * Maybe a physical button or two as an alternative means of control, if Bluetooth stops working.
+
+Cool add-on hardware:
+
+* Microphone, to allow animation to be synced to any music that's playing around me.
+* Motion sensor (IMU?) on each boot, to allow animation to be synced to my footsteps.
+* IMU, to allow animation to be synced to the direction I'm facing or the speed I'm moving at.
+
+Animation ideas:
+
+* Typical "xmas lights" effects: solid colour, gentle "breathing", rapid "disco" patterns.
+* Waves of colour, originating from the heart and spreading over the body, in time with the beat of the music.
+* Waves of colour originating from my feet as I walk.
+* Intertially static colour field.
 
 ## The story
 
-### 2026-02-03 Why?
+### Why?
 
 I like cool outfits and electronics, and I've been itching for a good embedded project for a long time.
 
@@ -25,7 +39,7 @@ Inspirations:
 * https://breq.dev/projects/outshine
 * https://www.instagram.com/artpandora/
 
-### 2026-02-03 So, where do I start?
+### So, where do I start?
 
 This is what I reckon I'll need to do (not necessarily in this order):
 
@@ -40,13 +54,12 @@ This is what I reckon I'll need to do (not necessarily in this order):
   * Animation controller
   * Bluetooth driver
   * State machine for moving from one animation/mode to another (as directed by Bluetooth or buttons)
-  * Microphone driver
-  * Beat detection algorithm
+  * Drivers and algorithms for add-on hardware
 * Assemble power supply (battery, DC-to-DC converter, distribution).
 * Design and 3D print an enclosure for the microcontroller and power supply, and a way to mount it on the outfit.
 * ???
 
-### 2026-02-03 Which microcontroller / board?
+### Which microcontroller / board?
 
 I've previously done efficient driving of WS2812 LEDs on a Teensy LC before, but these boards
 seem to be out of production now, and they don't have builtin Bluetooth.
@@ -58,8 +71,15 @@ Requirements for a new board:
   continuous transmission, or 266,666 bytes/sec with a 1 bit-duration gap between bytes
   (as is the case on the Teensy LC).
 * DMA capable of transferring from RAM to the aforementioned SPI peripheral.
+* Some EEPROM to save the current animation & colour selections.
+* Either a bultin IMU, or an I2C interface to talk to one.
+* Powerful enough to do real-time pixel calculations - this will definitely come into play for the IMU-based animations.
 * Ideally ARM-based, because I'd like to get some experience of embedded Rust;
   but it's not the end of the world if I have to fall back to C++.
+* Microcontroller is ideally available in an easily-solderable package. I can
+  forsee the electronics getting complex enough that I might need a custom PCB, and
+  I don't want to have to port my code to another architecture or deal with trying
+  to solder QFNs when that time comes.
 
 Most boards don't mention whether or not they have DMA in their product pages, so I might have
 to do a lot of digging through datasheets... [This list][microcontroller-list] looks like a
