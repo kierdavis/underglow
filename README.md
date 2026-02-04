@@ -66,7 +66,8 @@ seem to be out of production now, and they don't have builtin Bluetooth.
 
 Requirements for a new board:
 
-* Builtin Bluetooth, because I don't want too many discrete boards flying around.
+* Suitable form factor for wearable elctronics (small, ideally headerless).
+* Ideally, builtin Bluetooth, because I don't want too many discrete boards flying around.
 * SPI capable of transmitting at a baud rate of 2,400,000; that's 300,000 bytes/sec
   continuous transmission, or 266,666 bytes/sec with a 1 bit-duration gap between bytes
   (as is the case on the Teensy LC).
