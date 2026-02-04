@@ -22,7 +22,7 @@ Animation ideas:
 * Typical "xmas lights" effects: solid colour, gentle "breathing", rapid "disco" patterns.
 * Waves of colour, originating from the heart and spreading over the body, in time with the beat of the music.
 * Waves of colour originating from my feet as I walk.
-* Intertially static colour field.
+* Inertially static colour field.
 
 ## The story
 
