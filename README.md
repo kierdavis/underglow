@@ -82,8 +82,10 @@ Requirements for a new board:
   to solder QFNs when that time comes.
 
 Most boards don't mention whether or not they have DMA in their product pages, so I might have
-to do a lot of digging through datasheets... [This list][microcontroller-list] looks like a
-good starting point though.
+to do a lot of digging through datasheets... [This list][microcontroller-list-upstream] looks like a
+good starting point though. I'll [copy it into this repo][microcontroller-list] and annotate each
+board with whether it's viable or not.
 
 
-[microcontroller-list]: https://github.com/Slayingripper/MicroControllers
+[microcontroller-list-upstream]: https://github.com/Slayingripper/MicroControllers
+[microcontroller-list]: design-docs/microcontroller-comparison.md
