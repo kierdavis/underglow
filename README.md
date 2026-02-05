@@ -40,3 +40,4 @@ Inspirations:
 ## The development story
 
 * [Getting the project off the ground](doc/story/getting-started.md)
+* [The toolchain, or: An Exercise in Masochism](doc/story/toolchain.md)
