@@ -27,18 +27,18 @@ This document provides a categorized list of popular microcontrollers, their off
 
 Arduino is a popular open-source electronics platform based on easy-to-use hardware and software. It is widely used for building digital devices and interactive objects.
 
-| **Microcontroller**       | **Documentation**                                      | **Buy Link**                                                                                 |
-|---------------------------|---------------------------------------------------------|----------------------------------------------------------------------------------------------|
-| **Arduino Uno**           | [Arduino Uno Documentation](https://www.arduino.cc/en/Guide/ArduinoUno) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-uno-rev3)                   |
-| **Arduino Mega 2560**     | [Arduino Mega Documentation](https://www.arduino.cc/en/Guide/ArduinoMega2560) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-mega-2560-r3)               |
-| **Arduino Nano**          | [Arduino Nano Documentation](https://www.arduino.cc/en/Guide/ArduinoNano) | [Buy on SparkFun](https://www.sparkfun.com/products/15623)                                   |
-| **Arduino Leonardo**      | [Arduino Leonardo Documentation](https://www.arduino.cc/en/Guide/ArduinoLeonardo) | [Buy on Adafruit](https://www.adafruit.com/product/4298)                                     |
-| **Arduino Due**           | [Arduino Due Documentation](https://www.arduino.cc/en/Guide/ArduinoDue) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-due)                        |
-| **Arduino Micro**         | [Arduino Micro Documentation](https://www.arduino.cc/en/Guide/ArduinoMicro) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-micro)                      |
-| **Arduino MKR1000**       | [Arduino MKR1000 Documentation](https://www.arduino.cc/en/Guide/MKR1000) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-mkr1000)                    |
-| **Arduino MKR Zero**      | [Arduino MKR Zero Documentation](https://www.arduino.cc/en/Guide/MKRZero) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-mkr-zero)                   |
-| **Arduino Nano 33 IoT**   | [Arduino Nano 33 IoT Documentation](https://www.arduino.cc/en/Guide/NANO33IoT) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-nano-33-iot)                |
-| **Arduino Nano 33 BLE**   | [Arduino Nano 33 BLE Documentation](https://www.arduino.cc/en/Guide/NANO33BLE) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-nano-33-ble)                |
+| **Microcontroller**       | **Documentation**                                      | **Buy Link**                                                                                 | **CPU** | **Viable?** |
+|---------------------------|---------------------------------------------------------|----------------------------------------------------------------------------------------------|---------|-------------|
+| **Arduino Uno**           | [Arduino Uno Documentation](https://www.arduino.cc/en/Guide/ArduinoUno) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-uno-rev3)                   | ATmega328 | No (lacks DMA) |
+| **Arduino Mega 2560**     | [Arduino Mega Documentation](https://www.arduino.cc/en/Guide/ArduinoMega2560) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-mega-2560-r3)               | ATmega2560 | No (lacks DMA) |
+| **Arduino Nano**          | [Arduino Nano Documentation](https://www.arduino.cc/en/Guide/ArduinoNano) | [Buy on SparkFun](https://www.sparkfun.com/products/15623)                                   | ATmega328 | No (lacks DMA) |
+| **Arduino Leonardo**      | [Arduino Leonardo Documentation](https://www.arduino.cc/en/Guide/ArduinoLeonardo) | [Buy on Adafruit](https://www.adafruit.com/product/4298)                                     | ATmega32U4 | No (lacks DMA) |
+| **Arduino Due**           | [Arduino Due Documentation](https://www.arduino.cc/en/Guide/ArduinoDue) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-due)                        | ATSAM3X8E (ARM Cortex-M3) |
+| **Arduino Micro**         | [Arduino Micro Documentation](https://www.arduino.cc/en/Guide/ArduinoMicro) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-micro)                      | ATmega32u4 | No (lacks DMA) |
+| **Arduino MKR1000**       | [Arduino MKR1000 Documentation](https://www.arduino.cc/en/Guide/MKR1000) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-mkr1000)                    | ATSAMD21 (ARM Cortex-M0) |
+| **Arduino MKR Zero**      | [Arduino MKR Zero Documentation](https://www.arduino.cc/en/Guide/MKRZero) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-mkr-zero)                   | ATSAMD21 (ARM Cortex-M0) |
+| **Arduino Nano 33 IoT**   | [Arduino Nano 33 IoT Documentation](https://www.arduino.cc/en/Guide/NANO33IoT) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-nano-33-iot)                | ATSAMD21 (ARM Cortex-M0) | builtin bluetooth! |
+| **Arduino Nano 33 BLE**   | [Arduino Nano 33 BLE Documentation](https://www.arduino.cc/en/Guide/NANO33BLE) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-nano-33-ble)                | nRF52840 | builtin bluetooth and IMU!! |
 | **Arduino Nano Every**    | [Arduino Nano Every Documentation](https://www.arduino.cc/en/Guide/NANOEvery) | [Buy on Arduino Store](https://store.arduino.cc/products/arduino-nano-every)                 |
 | **Arduino Portenta H7**   | [Arduino Portenta H7 Documentation](https://www.arduino.cc/pro/h7) | [Buy on Arduino Store](https://store.arduino.cc/products/portenta-h7)                        |
 | **Arduino Pro Mini**      | [Arduino Pro Mini Documentation](https://www.arduino.cc/en/Guide/ArduinoProMini) | [Buy on SparkFun](https://www.sparkfun.com/products/11113)                                   |
