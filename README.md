@@ -89,4 +89,4 @@ board with whether it's viable or not.
 
 
 [microcontroller-list-upstream]: https://github.com/Slayingripper/MicroControllers
-[microcontroller-list]: design-docs/microcontroller-comparison.md
+[microcontroller-list]: doc/design/microcontroller-comparison.md
