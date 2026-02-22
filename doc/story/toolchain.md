@@ -11,11 +11,11 @@ start writing useful code right away!
 Unfortunately (for you), I like taking matters into my own hands.
 There's a few reasons why I stepped right over using the Arduino SDK:
 
-- I wanted to get some practice at using Rust for a real embedded software project.
-- I expect my software will have to do some fairly heavy computation (for the 3D
+* I wanted to get some practice at using Rust for a real embedded software project.
+* I expect my software will have to do some fairly heavy computation (for the 3D
   spatial stuff) on a fairly modest microcontroller - for which I'll want to have
   a lot of control over the compiler's code generation and the hardware drivers.
-- I just enjoy playing with low-level stuff like this!
+* I just enjoy playing with low-level stuff like this!
 
 Fortunately there's already great support for writing embedded software in Rust!
 Especially so for ARM Cortex-M microcontrollers like the one on the BLE Sense Rev2.
