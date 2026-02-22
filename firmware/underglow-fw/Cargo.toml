@@ -1,6 +1,6 @@
 [package]
 authors = ["Kier Ada Davis <me@kierdavis.com>"]
-edition = "2018"
+edition = "2024"
 readme = "README.md"
 name = "underglow-fw"
 version = "0.1.0"
