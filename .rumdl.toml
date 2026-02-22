@@ -6,3 +6,6 @@ exclude = [
 ]
 respect-gitignore = true
 flavor = "gfm"
+
+[MD013]
+code-blocks = false
