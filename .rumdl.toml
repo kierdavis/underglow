@@ -1,0 +1,8 @@
+[global]
+include = ["**/*.md"]
+exclude = [
+  ".git",
+  "doc/design/microcontroller-comparison.md",
+]
+respect-gitignore = true
+flavor = "gfm"
