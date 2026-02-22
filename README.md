@@ -1,6 +1,6 @@
 # underglow
 
-A wearable tech concept.
+A fashion tech concept.
 
 ## The goal
 
@@ -27,8 +27,7 @@ Animation ideas:
 ## The motivation
 
 I like cool outfits and electronics, and I've been itching for a good embedded project for a long time.
-
-Specifically, I think this would be really cool to show off at the upcoming EMFcamp 2026.
+And I think this would be really cool to show off at the upcoming EMFcamp 2026.
 
 Inspirations:
 
