@@ -23,6 +23,7 @@ Animation ideas:
 * Waves of colour, originating from the heart and spreading over the body, in time with the beat of the music.
 * Waves of colour originating from my feet as I walk.
 * Inertially static colour field.
+* Rainfall.
 
 ## The motivation
 
