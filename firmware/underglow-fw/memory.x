@@ -1,10 +1,18 @@
 MEMORY
 {
-  /* NOTE 1 K = 1 KiBi = 1024 bytes */
-  /* TODO Adjust these memory regions to match your device memory layout */
-  /* These values correspond to the LM3S6965, one of the few devices QEMU can emulate */
-  FLASH : ORIGIN = 0x00000000, LENGTH = 256K
-  RAM : ORIGIN = 0x20000000, LENGTH = 64K
+  /* Memory layout sourced from the linker script used by the Arduino toolchain:
+   *   https://github.com/arduino/ArduinoCore-mbed/blob/aea05a0/variants/ARDUINO_NANO33BLE/linker_script.ld
+   * and checked against the nRF52840 datasheet:
+   *   https://content.arduino.cc/assets/Nano_BLE_MCU-nRF52840_PS_v1.1.pdf
+   *
+   * The first 0x10000 bytes of flash are reserved for the Arduino bootloader.
+   *
+   * TODO: The Arduino/MbedOS toolchain reserves the first 0x200 bytes of RAM as
+   * "RAM_NVIC" and "RAM_CRASH_DATA" - is it necessary to replicate that if we
+   * aren't using this toolchain?
+   */
+  FLASH : ORIGIN = 0x10000, LENGTH = 0xf0000
+  RAM : ORIGIN = ((0x20000000 + 0x100) + 0x100), LENGTH = (0x40000 - (0x100 + 0x100))
 }
 
 /* This is where the call stack will be allocated. */
