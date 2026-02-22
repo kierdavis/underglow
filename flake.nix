@@ -38,7 +38,13 @@
           ];
       in {
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [alejandra crossRust pre-commit rumdl];
+          packages = with pkgs; [
+            alejandra
+            crossRust
+            pre-commit
+            rumdl
+            pkgsCross.arm-embedded.buildPackages.binutils
+          ];
           shellHook = ''export PS1="\n\[\033[1;32m\][underglow]\[\033[0m\] ''${PS1#\\n}"'';
         };
       }
