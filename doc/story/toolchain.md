@@ -16,17 +16,5 @@ There's a few reasons why I stepped right over using the Arduino SDK:
 * I wanted to get some practice at using Rust for a real embedded software project.
 * I just enjoy playing with low-level stuff like this!
 
-But, that's not to say I'll be working _entirely_ from scratch! I'll start with
-an Arduino IDE sketch, and transition it step by step into what I want.
 
-## Demo program / Arduino sketch
-
-To fiddle with the toolchain, I'll need a simple demo program to operate on.
-I wrote a [quick 'n' dirty sketch][colourwheelcode] to cycle the onboard LED through the RGB spectrum.
-
-![Video depicting the program running on the Arduino][colourwheelgif]
-
-
-[colourwheelcode]: ../../prototyping/arduino_sketch/arduino_sketch.ino
-[colourwheelgif]: ../assets/colour_wheel_demo.gif
 [nano33ble2]: https://docs.arduino.cc/hardware/nano-33-ble-sense-rev2/
