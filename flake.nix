@@ -13,13 +13,17 @@
     };
   };
 
-  outputs = { flake-utils, nixpkgs, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
+  outputs = {
+    flake-utils,
+    nixpkgs,
+    ...
+  }:
+    flake-utils.lib.eachDefaultSystem (
+      system: let
+        pkgs = import nixpkgs {inherit system;};
       in {
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [ pre-commit rumdl ];
+          packages = with pkgs; [alejandra pre-commit rumdl];
           shellHook = ''export PS1="\n\[\033[1;32m\][underglow]\[\033[0m\] ''${PS1#\\n}"'';
         };
       }

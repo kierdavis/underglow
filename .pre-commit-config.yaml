@@ -1,8 +1,14 @@
 repos:
   - repo: local
     hooks:
-      - id: rumdl-fmt
+      - id: format-md
         name: Format markdown
         types: [markdown]
         language: system
         entry: rumdl check --fix
+
+      - id: format-nix
+        name: Format nix
+        types: [nix]
+        language: system
+        entry: alejandra
