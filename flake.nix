@@ -1,5 +1,11 @@
 {
   inputs = {
+    fenix = {
+      type = "github";
+      owner = "nix-community";
+      repo = "fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils = {
       type = "github";
       owner = "numtide";
@@ -14,6 +20,7 @@
   };
 
   outputs = {
+    fenix,
     flake-utils,
     nixpkgs,
     ...
@@ -21,9 +28,17 @@
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = import nixpkgs {inherit system;};
+
+        crossRustTarget = "thumbv7em-none-eabihf";
+        crossRust = with fenix.packages.${system};
+          combine [
+            stable.cargo
+            stable.rustc
+            targets.${crossRustTarget}.stable.rust-std
+          ];
       in {
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [alejandra pre-commit rumdl];
+          packages = with pkgs; [alejandra crossRust pre-commit rumdl];
           shellHook = ''export PS1="\n\[\033[1;32m\][underglow]\[\033[0m\] ''${PS1#\\n}"'';
         };
       }
