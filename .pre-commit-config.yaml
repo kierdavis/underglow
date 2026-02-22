@@ -12,3 +12,9 @@ repos:
         types: [nix]
         language: system
         entry: alejandra
+
+      - id: format-rust
+        name: Format rust
+        types: [rust]
+        language: system
+        entry: rustfmt

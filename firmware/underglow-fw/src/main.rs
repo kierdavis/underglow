@@ -7,7 +7,7 @@ use cortex_m_rt::entry;
 
 #[entry]
 fn main() -> ! {
-    loop {
-        // your code goes here
-    }
+  loop {
+    // your code goes here
+  }
 }
