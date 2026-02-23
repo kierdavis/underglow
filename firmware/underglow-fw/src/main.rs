@@ -56,6 +56,14 @@ impl GPIOPin {
   fn set_output_state(self, state: bool) {
     todo!()
   }
+
+  fn pin_index(self) -> usize {
+    match self {
+      Self::Red => 24,
+      Self::Green => 16,
+      Self::Blue => 6,
+    }
+  }
 }
 
 fn delay_one_second() {
