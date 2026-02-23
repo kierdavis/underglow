@@ -81,7 +81,7 @@ needed like the original README or the `examples` folder. Then I proceeded to:
 And then we're all set to compile the project for the first time!
 
 ```console
-[.../underglow/firmware]$ cargo build --release -p underglow-fw
+[kier@coloris:~/underglow/firmware]$ cargo build --release -p underglow-fw
    Compiling proc-macro2 v1.0.106
    Compiling semver-parser v0.7.0
    Compiling quote v1.0.44
@@ -98,7 +98,7 @@ And then we're all set to compile the project for the first time!
    Compiling embedded-hal v0.2.7
    Compiling bitfield v0.13.2
    Compiling bare-metal v0.2.5
-   Compiling underglow-fw v0.1.0 (.../underglow/firmware/underglow-fw)
+   Compiling underglow-fw v0.1.0 (~/underglow/firmware/underglow-fw)
    Compiling critical-section v1.2.0
    Compiling panic-halt v1.0.0
    Compiling syn v2.0.117
