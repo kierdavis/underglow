@@ -258,8 +258,8 @@ Yay! Our brand new firmware package is running on the real hardware!
 ![Arduino board with only the power LED illuminated](../assets/board_doing_nothing.jpg)
 
 ...and doing very little of interest. Did it flash properly? How will we ever
-know? The [`src/main.rs` that we got from the `cortex-m-quickstart` template]
-[quickstart-main] does nothing except go into an infinite loop - it doesn't
+know? The [`src/main.rs` that we got from the `cortex-m-quickstart`
+template][quickstart-main] does nothing except go into an infinite loop - it doesn't
 flash any lights or make any sounds. Next, let's write a more interesting
 program so that we can tell if our compile & upload process works correctly.
 
