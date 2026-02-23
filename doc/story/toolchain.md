@@ -263,6 +263,14 @@ template][quickstart-main] does nothing except go into an infinite loop - it doe
 flash any lights or make any sounds. Next, let's write a more interesting
 program so that we can tell if our compile & upload process works correctly.
 
+## Step 4: A demo program that actually does something
+
+Coming soon...
+
+## Step 5: Tying this all together with Nix
+
+Coming soon...
+
 [arduino-bossa]: https://github.com/arduino/BOSSA
 [arduino-bossa-nix-commit]: https://github.com/kierdavis/underglow/commit/029a1721892ca274452a6a8c064ecd212cb1cdd2
 [arduino-cli]: https://docs.arduino.cc/arduino-cli/getting-started/
