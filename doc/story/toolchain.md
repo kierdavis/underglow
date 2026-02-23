@@ -81,7 +81,7 @@ needed like the original README or the `examples` folder. Then I proceeded to:
 And then we're all set to compile the project for the first time!
 
 ```console
-[.../underglow/firmware/underglow-fw]$ cargo build --release
+[.../underglow/firmware]$ cargo build --release -p underglow-fw
    Compiling proc-macro2 v1.0.106
    Compiling semver-parser v0.7.0
    Compiling quote v1.0.44
@@ -111,9 +111,9 @@ We can see that cargo spat out an executable in the
 executable uses the ARM instruction set rather than x86_64:
 
 ```console
-[.../underglow/firmware/underglow-fw]$ file ../target/thumbv7em-none-eabihf/release/underglow-fw
-../target/thumbv7em-none-eabihf/release/underglow-fw: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, with debug_info, not stripped
-                                                          ^^^^^^                 ^^^
+[kier@coloris:~/underglow/firmware]$ file target/thumbv7em-none-eabihf/release/underglow-fw
+target/thumbv7em-none-eabihf/release/underglow-fw: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, with debug_info, not stripped
+                                                       ^^^^^^                 ^^^
 ```
 
 [book]: https://doc.rust-lang.org/beta/embedded-book/
