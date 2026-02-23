@@ -54,6 +54,8 @@ impl Colour {
 
 impl GPIOPin {
   fn set_output_state(self, state: bool) {
+    const GPIO0_OUTSET: *mut u32 = 0x50000508 as *mut _;
+    const GPIO0_OUTCLR: *mut u32 = 0x5000050C as *mut _;
     todo!()
   }
 
