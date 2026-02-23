@@ -265,7 +265,59 @@ program so that we can tell if our compile & upload process works correctly.
 
 ## Part 4: A demo program that actually does something
 
-Coming soon...
+The Nano 33 BLE series of boards have an onboard RGB LED. Let's make it flash
+different colours in turn: red, green, blue, and back to red, looping forever,
+spending about a second on each colour.
+
+Let's go ahead and write some code to model this behaviour - we'll work out the
+details of driving the hardware later. [See the code...][demo-app-logic-commit]
+
+The LED is straightforward to drive - the red, green and blue channels are each
+wired to their own GPIO pin on the microcontroller. If we want the LED to show
+green, we set the green pin high and the red and blue pins low, etc.
+[See the code...][demo-colour-mapping-commit]
+
+Now to implement `GPIOPin::set_output_state`, we need to start looking at datasheets.
+The [pinout document for the Nano 33 BLE Sense Rev2][nano33ble2-pinout] tells us
+which microcontroller pin each colour channel is connected to:
+
+![Red is connected to P0.24, green to P0.16 and blue to P0.06](../assets/onboard_led_pin_map.png)
+
+Here, `P0.24` means the pin at position 24 within GPIO port 0.
+[See the code...][demo-pin-index-commit]
+
+Now it's time to work out which memory-mapped register(s) we need to write to in
+order to set the pin states. Let's head to the microcontroller's
+[datasheet][nrf52840-datasheet] and jump to the section for GPIO pins (§6.9.2).
+These look like the ones we want - particularly `OUTSET` and `OUTCLR` since
+they mean we can update a single pin's state in a single write operation instead
+of a read-modify-write sequence.
+
+![`OUTSET` and `OUTCLR` registers](../assets/nrf_gpio_out_registers.png)
+
+`OUTSET` is located at offset 0x508 from the beginning of the register block
+for GPIO port 0 (and `OUTCLR` at offset 0x50C). But where is this register
+block? Its address can be found in §4.2.4 Instantiation, which lists every
+instance of every peripheral and the address that its corresponding register
+block begins at.
+
+![The registers for GPIO port 0 are based at address 0x50000000](../assets/nrf_gpio0_instantiation.png)
+
+So we can deduce that `OUTSET` for GPIO port 0 lies at address 0x50000508 and
+`OUTCLR` at 0x5000050C. [See the code...][demo-out-reg-addrs-commit]
+
+How do we interact with a register in Rust? It's not as simple as just writing
+to the pointer - the compiler needs to understand that it can't optimize away
+seemingly-redundant writes to this memory location. In C, we'd mark the pointer
+as `volatile`; the equivalent behaviour in Rust is neatly encapsulated by the
+[`volatile-register`][volatile-register] crate.
+
+`volatile-register` offers types for read-only, write-only and read-write
+registers. `OUTSET` and `OUTCLR` are write-only 32-bit registers, so we'll use
+`volatile_register::WO<u32>` to interact with them.
+[See the code...][demo-vol-reg-commit].
+
+More coming soon...
 
 ## Part 5: Tying this all together with Nix
 
@@ -280,10 +332,17 @@ Coming soon...
 [cortex-m]: https://crates.io/crates/cortex-m
 [cortex-m-quickstart]: https://github.com/rust-embedded/cortex-m-quickstart/tree/ac02415275d0190a1a7aa730ec2b0bdf7c3ef88f
 [crate-metadata-commit]: https://github.com/kierdavis/underglow/commit/5f029c0e43cbce34e5f0259bb4e3c75f97a7f4c5
+[demo-app-logic-commit]: https://github.com/kierdavis/underglow/commit/b987a314b1a33e830740ba60e9de921cecf3ad11
+[demo-colour-mapping-commit]: https://github.com/kierdavis/underglow/commit/bf711139ed267838113cb5a748c0e4f360d833c5
+[demo-pin-index-commit]: https://github.com/kierdavis/underglow/commit/28b6906529a5176e2d6bfaddcc559f7b66fc05d0
+[demo-out-reg-addrs-commit]: https://github.com/kierdavis/underglow/commit/f5838acf678c7056a555a6c3dcae62250404c88b
+[demo-vol-reg-commit]: https://github.com/kierdavis/underglow/commit/226b1e91fb9e58f059b522465dd6a8a273c0f0b2
 [fenix]: https://github.com/nix-community/fenix
 [knurling-template]: https://github.com/knurling-rs/app-template
 [memory-layout-commit]: https://github.com/kierdavis/underglow/commit/64135aa8e4deedc293c1cd67360de83a2da19175
 [nano33ble2]: https://docs.arduino.cc/hardware/nano-33-ble-sense-rev2/
+[nano33ble2-pinout]: https://docs.arduino.cc/resources/pinouts/ABX00069-full-pinout.pdf
+[nrf52840-datasheet]: https://docs-be.nordicsemi.com/bundle/ps_nrf52840/attach/nRF52840_PS_v1.11.pdf?_LANG=enus
 [quickstart-commit]: https://github.com/kierdavis/underglow/commit/9170d92bd875456be7652712e49946c1f01ec32c
 [quickstart-main]: https://github.com/kierdavis/underglow/blob/9170d92bd875456be7652712e49946c1f01ec32c/firmware/underglow-fw/src/main.rs
 [rustup]: https://rustup.rs/
@@ -291,4 +350,5 @@ Coming soon...
 [rust-nix-commit]: https://github.com/kierdavis/underglow/commit/0303d142465da51cee1706e7fbdd3f690dccab28
 [semihosting-commit]: https://github.com/kierdavis/underglow/commit/08be183c09fe008c20cc0571f3faedf40e5aee55
 [target-platform-commit]: https://github.com/kierdavis/underglow/commit/8d0356ea12e54f0041bd9361d960050258da2386
+[volatile-register]: https://crates.io/crates/volatile-register
 [workspace-commit]: https://github.com/kierdavis/underglow/commit/18a1819da1c746650a45d34f274508fbe8081ca6
