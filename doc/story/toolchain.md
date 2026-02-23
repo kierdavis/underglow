@@ -229,12 +229,12 @@ binary format (i.e. the exact bytes that need to be copied into the processor's
 flash memory). We can do this conversion using `objcopy`:
 
 ```console
-[underglow] [kier@coloris:~/underglow/firmware]$ arm-none-eabi-objcopy -O binary target/thumbv7em-none-eabihf/release/underglow-fw underglow-fw.bin
+[kier@coloris:~/underglow/firmware]$ arm-none-eabi-objcopy -O binary target/thumbv7em-none-eabihf/release/underglow-fw underglow-fw.bin
 
-[underglow] [kier@coloris:~/underglow/firmware]$ file underglow-fw.bin
+[kier@coloris:~/underglow/firmware]$ file underglow-fw.bin
 underglow-fw.bin: ARM Cortex-M firmware, initial SP at 0x20040000, reset at 0x00010400, NMI at 0x00010458, HardFault at 0x00010464, SVCall at 0x00010458, PendSV at 0x00010458
 
-[underglow] [kier@coloris:~/underglow/firmware]$ bossac --port=ttyACM0 -U -i -e -w underglow-fw.bin -R
+[kier@coloris:~/underglow/firmware]$ bossac --port=ttyACM0 -U -i -e -w underglow-fw.bin -R
 Device       : nRF52840-QIAA
 Version      : Arduino Bootloader (SAM-BA extended) 2.0 [Arduino:IKXYZ]
 Address      : 0x0
