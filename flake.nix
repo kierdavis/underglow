@@ -27,7 +27,21 @@
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
-        pkgs = import nixpkgs {inherit system;};
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            (self: super: {
+              bossa = super.bossa.overrideAttrs (_: {
+                src = self.fetchFromGitHub {
+                  owner = "arduino";
+                  repo = "BOSSA";
+                  rev = "37600d1635f830cc0cdf7c56e586a021272c4e35";
+                  hash = "sha256-lmeCpHi05G5SH8ue/auzYTwdr//AdnOS8ctQ/IC8AeI=";
+                };
+              });
+            })
+          ];
+        };
 
         crossRustTarget = "thumbv7em-none-eabihf";
         crossRust = with fenix.packages.${system};
@@ -40,6 +54,7 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             alejandra
+            bossa
             crossRust
             pre-commit
             rumdl
