@@ -21,7 +21,7 @@ Fortunately there's already great support for writing embedded software in Rust!
 Especially so for ARM Cortex-M microcontrollers like the one on the BLE Sense Rev2.
 The [Embedded Rust Book][book] is a fantastic place to learn about the concepts.
 
-## Step 1: Installing Rust with embedded support
+## Part 1: Installing Rust with embedded support
 
 The Arduino Nano 33 BLE Sense Rev2 board features a Nordic nRF52840 microcontroller,
 which is built around an ARM Cortex-M4F processor core. We'll need to tell Rust
@@ -45,7 +45,7 @@ rustup target add thumbv7em-none-eabihf
 `thumbv7em-none-eabihf` is Rust's name for the embedded ARM Cortex-M4F
 architecture, as is used on the Arduino Nano 33 BLE Sense Rev2.
 
-## Step 2: Creating a Rust crate for our project
+## Part 2: Creating a Rust crate for our project
 
 I'll be leaning heavily on the industry-standard [`cortex-m`][cortex-m] crate
 for this project. Not only does it provide an API for accessing standard Cortex-M
@@ -116,7 +116,7 @@ target/thumbv7em-none-eabihf/release/underglow-fw: ELF 32-bit LSB executable, AR
                                                        ^^^^^^                 ^^^
 ```
 
-## Step 3: Uploading the program to the board
+## Part 3: Uploading the program to the board
 
 I figured I'd replicate what the Arduino framework does here.
 
@@ -263,11 +263,11 @@ template][quickstart-main] does nothing except go into an infinite loop - it doe
 flash any lights or make any sounds. Next, let's write a more interesting
 program so that we can tell if our compile & upload process works correctly.
 
-## Step 4: A demo program that actually does something
+## Part 4: A demo program that actually does something
 
 Coming soon...
 
-## Step 5: Tying this all together with Nix
+## Part 5: Tying this all together with Nix
 
 Coming soon...
 
