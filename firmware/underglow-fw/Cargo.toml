@@ -9,6 +9,7 @@ version = "0.1.0"
 cortex-m = { version = "0.7.6", features = ["critical-section-single-core"] }
 cortex-m-rt = "0.7"
 panic-halt = "1.0.0"
+volatile-register = "0.2.2"
 
 # this lets you use `cargo fix`!
 [[bin]]
